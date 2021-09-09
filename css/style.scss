@@ -1,0 +1,227 @@
+.text-black {
+  color: #333;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #35a1dd;
+  border-color: #35a1dd;
+
+  &:hover,
+  &:focus {
+	color: #35a1dd;
+	background-color: #fff;
+    border-color: #35a1dd;    
+  }
+}
+
+.btn-outline-primary {
+  color: #35a1dd;
+  background-color: #fff;
+  border-color: #35a1dd;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: #35a1dd;
+    border-color: #35a1dd;    
+  }
+}
+
+.btn-tooltip {
+	padding: 0 4px;
+	background-color: black;
+	color: white;
+	border-radius: 50%;
+	font-size: 10px;
+	position: relative;
+	top: -2px;
+
+  &:hover,
+  &:focus {
+    color: white;
+  }
+}
+
+.hr-line {
+	position: relative;
+
+	&::before {
+    content: "";
+    width: calc(100% - 2px);
+    height: 2px;
+    background: #ddd;
+    position: absolute;
+    left: 0;
+    top: 11px;
+    z-index: 0;
+	}
+
+	span {
+		background: white;
+		z-index: 1;
+		position: relative;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
+#customizeGlassesModal {
+	.nav-tabs {
+    position: relative;
+    top: -2rem;
+		width: calc(100% - 2rem);
+		background-color: white;
+		padding: 0.5rem;
+    border-radius: .25rem;
+		margin-left: 1rem;
+		margin-right: 1rem;
+		box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+    z-index: 1;
+
+		.nav-item {
+			-ms-flex-preferred-size: 0;
+			flex-basis: 0;
+			-webkit-box-flex: 1;
+			-ms-flex-positive: 1;
+			flex-grow: 1;
+			text-align: center;
+			margin-bottom: 0 !important;
+
+			.nav-link {
+				width: 100%;
+        color: #333;
+				border: 1px solid transparent;
+				border-radius: 0.25rem;
+				box-shadow: none !important;
+				outline: none !important;
+
+        &:focus,
+        &:hover {
+          background-color: #eee;
+        }
+
+				&.active {
+          background-color: #fff;
+          font-weight: bold;
+          color: #35a1dd;
+          border: 1px solid #35a1dd;
+					cursor: default;
+
+          &:focus,
+          &:hover {
+            background-color: #fff;
+          }
+				}
+
+				.fa-check-circle {
+					display: none;
+					color: green;
+				}
+
+				&.complete .fa-check-circle {
+					display: inline-block;
+				}			
+			}
+		}
+	}
+
+  .tab-content {
+    margin-top: -2rem;
+
+		#perscription-upload-your-rx {
+      background-color: #ddd;
+	    margin: 0 auto 1rem;
+		}
+
+    .perscription-inner {
+      text-align: left;
+      width: 100%;
+      max-width: 384px;
+      padding: 1rem;
+      margin: 0 auto 1rem;
+    }
+
+		#multiple-pupillary-distances {
+			display: none;
+		}
+
+		.hr-line {
+			width: 100%;
+			max-width: 384px;
+			margin: 0 auto;
+		}
+	}
+
+	.radio-options-wrap {
+		list-style: none;
+		padding-left: 0;
+
+		input[type="radio"] {
+			display: none;
+
+			&:checked + label {
+				cursor: default;
+				border: 2px solid #35a1dd;
+				-webkit-box-shadow: 0 10px 15px -3px rgb(0 0 0 / 7%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+				box-shadow: 0 10px 15px -3px rgb(0 0 0 / 7%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+
+				.card-title {
+					color: #35a1dd;
+				}
+			}
+		}
+
+		label {
+      color: #333;
+			cursor: pointer;
+
+      &:focus,
+      &:hover {
+        -webkit-box-shadow: 0 10px 15px -3px rgb(0 0 0 / 7%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 7%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+      }
+
+      .card-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+		}
+	}
+
+  .review-value {
+    text-transform: capitalize;
+  }
+
+  .form-group {
+    &.is-invalid {
+      label {
+        color: red;
+      }
+
+      input {
+        border-color: red;
+      }      
+    } 
+  }
+}
+
+.pupillary-distance-info {
+	display: none;
+	position: relative;
+
+	.btn-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+	}	
+	
+	img {
+    display: block;		
+    width: 100%;
+    margin: 0 auto 1rem;
+    max-width: 512px;
+	}
+}

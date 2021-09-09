@@ -1,0 +1,186 @@
+.text-black {
+  color: #333;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #35a1dd;
+  border-color: #35a1dd;
+}
+.btn-primary:hover, .btn-primary:focus {
+  color: #35a1dd;
+  background-color: #fff;
+  border-color: #35a1dd;
+}
+
+.btn-outline-primary {
+  color: #35a1dd;
+  background-color: #fff;
+  border-color: #35a1dd;
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  color: #fff;
+  background-color: #35a1dd;
+  border-color: #35a1dd;
+}
+
+.btn-tooltip {
+  padding: 0 4px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  position: relative;
+  top: -2px;
+}
+.btn-tooltip:hover, .btn-tooltip:focus {
+  color: white;
+}
+
+.hr-line {
+  position: relative;
+}
+.hr-line::before {
+  content: "";
+  width: calc(100% - 2px);
+  height: 2px;
+  background: #ddd;
+  position: absolute;
+  left: 0;
+  top: 11px;
+  z-index: 0;
+}
+.hr-line span {
+  background: white;
+  z-index: 1;
+  position: relative;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#customizeGlassesModal .nav-tabs {
+  position: relative;
+  top: -2rem;
+  width: calc(100% - 2rem);
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+#customizeGlassesModal .nav-tabs .nav-item {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-align: center;
+  margin-bottom: 0 !important;
+}
+#customizeGlassesModal .nav-tabs .nav-item .nav-link {
+  width: 100%;
+  color: #333;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: none !important;
+  outline: none !important;
+}
+#customizeGlassesModal .nav-tabs .nav-item .nav-link:focus, #customizeGlassesModal .nav-tabs .nav-item .nav-link:hover {
+  background-color: #eee;
+}
+#customizeGlassesModal .nav-tabs .nav-item .nav-link.active {
+  background-color: #fff;
+  font-weight: bold;
+  color: #35a1dd;
+  border: 1px solid #35a1dd;
+  cursor: default;
+}
+#customizeGlassesModal .nav-tabs .nav-item .nav-link.active:focus, #customizeGlassesModal .nav-tabs .nav-item .nav-link.active:hover {
+  background-color: #fff;
+}
+#customizeGlassesModal .nav-tabs .nav-item .nav-link .fa-check-circle {
+  display: none;
+  color: green;
+}
+#customizeGlassesModal .nav-tabs .nav-item .nav-link.complete .fa-check-circle {
+  display: inline-block;
+}
+#customizeGlassesModal .tab-content {
+  margin-top: -2rem;
+}
+#customizeGlassesModal .tab-content #perscription-upload-your-rx {
+  background-color: #ddd;
+  margin: 0 auto 1rem;
+}
+#customizeGlassesModal .tab-content .perscription-inner {
+  text-align: left;
+  width: 100%;
+  max-width: 384px;
+  padding: 1rem;
+  margin: 0 auto 1rem;
+}
+#customizeGlassesModal .tab-content #multiple-pupillary-distances {
+  display: none;
+}
+#customizeGlassesModal .tab-content .hr-line {
+  width: 100%;
+  max-width: 384px;
+  margin: 0 auto;
+}
+#customizeGlassesModal .radio-options-wrap {
+  list-style: none;
+  padding-left: 0;
+}
+#customizeGlassesModal .radio-options-wrap input[type=radio] {
+  display: none;
+}
+#customizeGlassesModal .radio-options-wrap input[type=radio]:checked + label {
+  cursor: default;
+  border: 2px solid #35a1dd;
+  -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+#customizeGlassesModal .radio-options-wrap input[type=radio]:checked + label .card-title {
+  color: #35a1dd;
+}
+#customizeGlassesModal .radio-options-wrap label {
+  color: #333;
+  cursor: pointer;
+}
+#customizeGlassesModal .radio-options-wrap label:focus, #customizeGlassesModal .radio-options-wrap label:hover {
+  -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+#customizeGlassesModal .radio-options-wrap label .card-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+#customizeGlassesModal .review-value {
+  text-transform: capitalize;
+}
+#customizeGlassesModal .form-group.is-invalid label {
+  color: red;
+}
+#customizeGlassesModal .form-group.is-invalid input {
+  border-color: red;
+}
+
+.pupillary-distance-info {
+  display: none;
+  position: relative;
+}
+.pupillary-distance-info .btn-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.pupillary-distance-info img {
+  display: block;
+  width: 100%;
+  margin: 0 auto 1rem;
+  max-width: 512px;
+}
