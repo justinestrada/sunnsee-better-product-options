@@ -410,6 +410,44 @@
 							</div>
 						</div>
 						<div class="tab-pane fade py-4" id="lens" role="tabpanel" aria-labelledby="vision-tab">
+              <div class="text-center">
+                <h3 class="mb-4">Select Lens Coating</h3>
+              </div>
+              <ul id="lens-coating" class="radio-options-wrap row mb-4">
+                <li class="col-md-4 mb-3 mb-md-0">
+                  <input type="radio" id="lens_coating_clear" name="lens_coating" value="clear"/>
+                  <label for="lens_coating_clear" class="card h-100">
+                    <div class="card-body text-center">
+                      <div>
+                        <h5>Clear</h5>
+                        <p>Transparent lens for everyday use.</p>
+                      </div>
+                    </div>
+                  </label>
+                </li>
+                <li class="col-md-4 mb-3 mb-md-0">
+                  <input type="radio" id="lens_coating_blue_light" name="lens_coating" value="blue_light"/>
+                  <label for="lens_coating_blue_light" class="card h-100">
+                    <div class="card-body text-center">
+                      <div>
+                        <h5>Blue Light Blocking</h5>
+                        <p>Protection from digital screens.</p>
+                      </div>
+                    </div>
+                  </label>
+                </li>
+                <li class="col-md-4 mb-3 mb-md-0">
+                  <input type="radio" id="lens_coating_light_adaptive" name="lens_coating" value="light_adaptive"/>
+                  <label for="lens_coating_light_adaptive" class="card h-100">
+                    <div class="card-body text-center">
+                      <div>
+                        <h5>Light Adaptive</h5>
+                        <p>Indoor and outdoor use that go from clear to dark.</p>
+                      </div>
+                    </div>
+                  </label>
+                </li>
+              </ul>
 							<div class="text-center">
 								<h3 class="mb-4">Select Lens Material</h3>
 							</div>
