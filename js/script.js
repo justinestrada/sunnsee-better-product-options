@@ -47,13 +47,15 @@ const ProductOptions = {
       if (goto === 'vision') {
         $('#color-tab').addClass('complete')
       } else if (goto === 'lens') {
+        /*
         const vision_val = $('#customizeGlassesModal [name="vision"]:checked').val()
-        if (vision_val === 'single_vision_prescription' || vision_val === 'progressive') {
+        if (vision_val === 'progressive') {
           if ($('#customizeGlassesModal [name="prescription_file"]').val() === '' && $('#customizeGlassesModal [name="prescription_file"]').val() === '') {
             $('#vision .form-group').addClass('is-invalid')
             return false;
           }
         }
+        */
         $('#vision-tab').addClass('complete')
       }
       $('#customizeGlassesTab #' + goto + '-tab').tab('show')
@@ -73,9 +75,13 @@ const ProductOptions = {
     this.onSelectVision()
     this.onPrescriptionChange()
     this.onPerscriptionOptionsBtnClick()
-    this.onUploadYourRx()
-    this.onToggleSinglePDInfo()
-    this.onTogglePupillaryDistanceInfo()
+    this.onPerscriptionUploadChange()
+    this.onPerscriptionManualChange()
+    this.initPupillaryDistance()
+    $('.link-skip-vision-step').on('click', function() {
+      $('#vision-tab').addClass('complete')
+      $('#customizeGlassesTab #lens-tab').tab('show')      
+    })
   },
   onSelectVision: function() {
     $('#customizeGlassesModal [name="vision"]').on('change', function() {
@@ -87,6 +93,7 @@ const ProductOptions = {
         $('#lens-tab, [go-to="lens"]').prop('disabled', false).removeAttr('disabled')
       }
       ProductOptions.savedOptions.vision = $(this).val()
+      ProductOptions.isVisionComplete()
       // ProductOptions.updateProgress()
     })
   },
@@ -102,26 +109,106 @@ const ProductOptions = {
     //   alert('TODO: Show Pupillary Distance options!')
     // })
     $('#btn-perscription-upload').on('click', function() {
-      $('#perscription-upload-your-rx').slideDown()
+      $('#perscription-upload-your-rx').slideDown().addClass('active')
+      $('#perscription-manual').slideUp().removeClass('active')
+      // move Pupillary Distance from Manual to Upload
+      if (!$('#perscription-upload-pupillary-distance #single-pupillary-distance').length) {
+        const pupillary_distance_html = $('#perscription-manual-pupillary-distance').html()
+        $('#perscription-manual-pupillary-distance').empty()
+        $('#perscription-upload-pupillary-distance').html(pupillary_distance_html)
+        ProductOptions.initPupillaryDistance()
+      }
+      ProductOptions.isVisionComplete()
+    })
+    $('#btn-perscription-manually').on('click', function() {
+      $('#perscription-upload-your-rx').slideUp().removeClass('active')
+      $('#perscription-manual').slideDown().addClass('active')
+      // move Pupillary Distance from Upload to Manual
+      if (!$('#perscription-manual-pupillary-distance #single-pupillary-distance').length) {
+        const pupillary_distance_html = $('#perscription-upload-pupillary-distance').html()
+        $('#perscription-upload-pupillary-distance').empty()
+        $('#perscription-manual-pupillary-distance').html(pupillary_distance_html)
+        ProductOptions.initPupillaryDistance()
+      }
+      ProductOptions.isVisionComplete()
     })
   },
-  onUploadYourRx: function() {
-    $('#prescription_file, #pupillary_distance').on('change', function() {
-      if (ProductOptions.isUploadYourRxComplete()) {
-        $('#lens-tab, [go-to="lens"]').prop('disabled', false).removeAttr('disabled')
-      } else {
-        $('#lens-tab, [go-to="lens"]').prop('disabled', true)
-      }
+  onPerscriptionUploadChange: function() {
+    $('#prescription_file').on('change', function() {
+      ProductOptions.isVisionComplete()
     })
-    $('.multiple-pupillary-distance-link').on('click', function() {
-      $('#multiple-pupillary-distances').css('display', 'flex')
-			$('#single-pupillary-distance').hide()
+  },
+  onPerscriptionManualChange: function() {
+    $('#right_oculus_dexter, #left_oculus_sinister').on('change', function() {
+      ProductOptions.isVisionComplete()
     })
+  },
+  isVisionComplete: function() {
+    let is_complete = false
+    const vision_value = $('#customizeGlassesModal [name="vision"]:checked').val()
+    if (vision_value === 'non_prescription') {
+      is_complete = true
+    } else {
+      if ($('#perscription-upload-your-rx').hasClass('active')) {
+        if (this.isUploadYourRxComplete() && this.isPupillaryDistanceComplete()) {
+          is_complete = true
+        }
+      } else if ($('#perscription-manual').hasClass('active')) {
+        if (this.isVisionManualComplete() && this.isPupillaryDistanceComplete()) {
+          is_complete = true
+        }
+      }  
+    }
+    if (is_complete) {
+      $('#lens-tab, [go-to="lens"]').prop('disabled', false).removeAttr('disabled')
+    } else {
+      $('#lens-tab, [go-to="lens"]').prop('disabled', true)
+    }
+    return is_complete
   },
   isUploadYourRxComplete: function() {
     const perscription_file_val = $('#prescription_file').val()
-    const pupillary_distance = $('#pupillary_distance').val()
-    return perscription_file_val !== '' && pupillary_distance !== '' ? true : false
+    return (perscription_file_val !== '') ? true : false
+  },
+  isVisionManualComplete: function() {
+    const right_oculus_dexter_val = $('#right_oculus_dexter').val()
+    const left_oculus_sinister = $('#left_oculus_sinister').val()
+    if (right_oculus_dexter_val === '' || left_oculus_sinister === '') {
+      return false
+    }
+    return true
+  },
+  isPupillaryDistanceComplete: function() {
+    let is_complete = false
+    if ($('#single-pupillary-distance').hasClass('active')) {
+      const pupillary_distance = $('#pupillary_distance').val()
+      is_complete = (pupillary_distance !== '') ? true : false
+    } else if ($('#multiple-pupillary-distances').hasClass('active')) {
+      const right_pupillary_distance = $('#right_pupillary_distance').val()
+      const left_pupillary_distance = $('#left_pupillary_distance').val()
+      is_complete = (right_pupillary_distance !== '' && left_pupillary_distance) ? true : false      
+    }
+    return is_complete
+  },
+  initPupillaryDistance: function() {
+    $('.multiple-pupillary-distances-link').on('click', function() {
+      $('#multiple-pupillary-distances').show().addClass('active')
+      $('#single-pupillary-distance').hide().removeClass('active')
+      $('.single-pupillary-distance-link').show()
+      $(this).removeClass('d-block').addClass('d-none')
+    })
+    $('.single-pupillary-distance-link').on('click', function() {
+      $('#single-pupillary-distance').show().addClass('active')
+      $('.single-pupillary-distance-link').show()
+      $('#multiple-pupillary-distances').hide().removeClass('active')
+      $('.multiple-pupillary-distances-link').removeClass('d-none').addClass('d-block')
+      $(this).hide()
+    })
+    this.onTogglePupillaryDistanceInfo()
+
+    $('#pupillary_distance, #right_pupillary_distance, #left_pupillary_distance').on('change', function() {
+      ProductOptions.isVisionComplete()
+    })
   },
   onTogglePupillaryDistanceInfo: function() {
     $('#show-single-pupillary-distance-info').on('click', function() {
