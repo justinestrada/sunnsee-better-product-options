@@ -256,5 +256,9 @@ const ProductOptions = {
 
 $(document).ready(function() {
   ProductOptions.onLoad()
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
 });
 })(jQuery);

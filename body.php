@@ -4,11 +4,22 @@
 		<div class="col text-center">
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#customizeGlassesModal">
-				Customize Glasses 
+				Customize Lenses and Purchase
 			</button>
 		</div>
 	</div>
 </div>
+
+<style>
+#right-oculus-dextrus {
+  padding-left: calc(33.33% + 12px);
+  margin-bottom: 1rem;  
+}
+#left-oculus-sinister {
+  padding-right: calc(33.33% + 12px);
+  margin-bottom: 1rem;  
+}
+</style>
 
 <div class="modal fade" id="customizeGlassesModal" tabindex="-1" aria-labelledby="customizeGlassesModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -87,8 +98,8 @@
 											<!-- <img src="https://cdn.shopify.com/s/files/1/0333/8882/2661/products/LUCIO-AMB-1_df6dc769-3ff9-4dec-8805-80bfbeab8cd8_750x750.png" class="card-img-top" alt="Rain"/> -->
 											<div class="card-body text-center">
                         <div>
-                          <h5 class="card-title">Single Vision Prescription</h5>
-                          <p class="card-text">Send us your prescription</p>                          
+                          <h5 class="card-title">Single Vision RX</h5>
+                          <p class="card-text">Most common rx lenses and corrects either distance or near / reading vision.</p>                          
                         </div>
 											</div>
 										</label>
@@ -100,7 +111,7 @@
 											<div class="card-body d-flex align-items-center">
                         <div>
                           <h5 class="card-title">Progressive</h5>
-                          <p class="card-text">Send us your prescription</p>                          
+                          <p class="card-text">Advanced digitally surfaced progressive lenses that correct distance, intermediate, and near vision in a gradual, no-line, single lens. Progressive lenses eliminates the need for multiple glasses.</p>                          
                         </div>
 											</div>
 										</label>
@@ -111,8 +122,8 @@
 											<!-- <img src="https://cdn.shopify.com/s/files/1/0333/8882/2661/products/LUCIO-AMB-1_df6dc769-3ff9-4dec-8805-80bfbeab8cd8_750x750.png" class="card-img-top" alt="Rain"/> -->
 											<div class="card-body d-flex align-items-center">
                         <div>
-                          <h5 class="card-title">Non-Prescription</h5>
-                          <p class="card-text">"Just for the look"</p>                          
+                          <h5 class="card-title">Non-RX</h5>
+                          <p class="card-text">Get the look and eye-protection without vision correction.</p>                          
                         </div>
 											</div>
 										</label>
@@ -120,8 +131,8 @@
 								</ul>
 								<div id="prescription-fields-wrap" class="mb-4" style="display: none;">
 									<div class="text-center">
-										<h4 class="mb-4">Prescription Options</h4>
-										<p>Choose how to provide your prescription</p>
+										<h4 class="mb-4">Select Prescription Type</h4>
+										<!-- <p>Choose how to provide your prescription</p> -->
 									</div>
 									<div class="row">
 										<div class="col text-center">
@@ -334,51 +345,249 @@
                         <div class="perscription-inner">
                           <div class="row mb-3">
                             <div class="col-6">
+                              <div id="right-oculus-dextrus">
+                                Right OD
+                              </div>
+                              <div class="form-group mb-3">
+                                <div class="row">
+                                  <div class="col-4">
+                                    <label for="right_od_sph">
+                                      SPH <button type="button" class="btn btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="SPH or Sphere Power is the measurement of correction required for near-sightedness or far-sightedness expressed in diopters.">?</button>
+                                    </label>
+                                  </div>
+                                  <div class="col-8">
+                                    <select id="right_od_sph" name="right_od_sph" class="form-control">
+                                      <option value="-10.00">-10.00</option>
+                                      <option value="-9.75">-9.75</option>
+                                      <option value="-9.50">-9.50</option>
+                                      <option value="-9.25">-9.25</option>
+                                      <option value="-9.00">-9.00</option>
+                                      <option value="-8.75">-8.75</option>
+                                      <option value="-8.50">-8.50</option>
+                                      <option value="-8.25">-8.25</option>
+                                      <option value="-8.00">-8.00</option>
+                                      <option value="-7.75">-7.75</option>
+                                      <option value="-7.50">-7.50</option>
+                                      <option value="-7.25">-7.25</option>
+                                      <option value="-7.00">-7.00</option>
+                                      <option value="-6.75">-6.75</option>
+                                      <option value="-6.50">-6.50</option>
+                                      <option value="-6.25">-6.25</option>
+                                      <option value="-6.00">-6.00</option>
+                                      <option value="-5.75">-5.75</option>
+                                      <option value="-5.50">-5.50</option>
+                                      <option value="-5.25">-5.25</option>
+                                      <option value="-5.00">-5.00</option>
+                                      <option value="-4.75">-4.75</option>
+                                      <option value="-4.50">-4.50</option>
+                                      <option value="-4.25">-4.25</option>
+                                      <option value="-4.00">-4.00</option>
+                                      <option value="-3.75">-3.75</option>
+                                      <option value="-3.50">-3.50</option>
+                                      <option value="-3.25">-3.25</option>
+                                      <option value="-3.00">-3.00</option>
+                                      <option value="-2.75">-2.75</option>
+                                      <option value="-2.50">-2.50</option>
+                                      <option value="-2.25">-2.25</option>
+                                      <option value="-2.00">-2.00</option>
+                                      <option value="-1.75">-1.75</option>
+                                      <option value="-1.50">-1.50</option>
+                                      <option value="-1.25">-1.25</option>
+                                      <option value="-1.00">-1.00</option>
+                                      <option value="-0.75">-0.75</option>
+                                      <option value="-0.50">-0.50</option>
+                                      <option value="-0.25">-0.25</option>
+                                      <option value="0.00">0.00</option>
+                                      <option value="" selected="">--</option>
+                                      <option value="0.00">PL</option>
+                                      <option value="0.00">Plano</option>
+                                      <option value="+0.25">+0.25</option>
+                                      <option value="+0.50">+0.50</option>
+                                      <option value="+0.75">+0.75</option>
+                                      <option value="+1.00">+1.00</option>
+                                      <option value="+1.25">+1.25</option>
+                                      <option value="+1.50">+1.50</option>
+                                      <option value="+1.75">+1.75</option>
+                                      <option value="+2.00">+2.00</option>
+                                      <option value="+2.25">+2.25</option>
+                                      <option value="+2.50">+2.50</option>
+                                      <option value="+2.75">+2.75</option>
+                                      <option value="+3.00">+3.00</option>
+                                      <option value="+3.25">+3.25</option>
+                                      <option value="+3.50">+3.50</option>
+                                      <option value="+3.75">+3.75</option>
+                                      <option value="+4.00">+4.00</option>
+                                      <option value="+4.25">+4.25</option>
+                                      <option value="+4.50">+4.50</option>
+                                      <option value="+4.75">+4.75</option>
+                                      <option value="+5.00">+5.00</option>
+                                      <option value="+5.25">+5.25</option>
+                                      <option value="+5.50">+5.50</option>
+                                      <option value="+5.75">+5.75</option>
+                                      <option value="+6.00">+6.00</option>
+                                      <option value="+6.25">+6.25</option>
+                                      <option value="+6.50">+6.50</option>
+                                      <option value="+6.75">+6.75</option>
+                                      <option value="+7.00">+7.00</option>
+                                      <option value="+7.25">+7.25</option>
+                                      <option value="+7.50">+7.50</option>
+                                      <option value="+7.75">+7.75</option>
+                                      <option value="+8.00">+8.00</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
                               <div class="form-group">
-                                <label for="right_oculus_dexter">Right OD</label>
-                                <select id="right_oculus_dexter" name="right_oculus_dexter" class="form-control">
-                                  <option value="" selected="">--</option>
-                                  <option value="+0.50">+0.50</option>
-                                  <option value="+0.75">+0.75</option>
-                                  <option value="+1.00">+1.00</option>
-                                  <option value="+1.25">+1.25</option>
-                                  <option value="+1.50">+1.50</option>
-                                  <option value="+1.75">+1.75</option>
-                                  <option value="+2.00">+2.00</option>
-                                  <option value="+2.25">+2.25</option>
-                                  <option value="+2.50">+2.50</option>
-                                  <option value="+2.75">+2.75</option>
-                                  <option value="+3.00">+3.00</option>
-                                  <option value="+3.25">+3.25</option>
-                                  <option value="+3.50">+3.50</option>
-                                  <option value="+3.75">+3.75</option>
-                                  <option value="+4.00">+4.00</option>
-                                </select>                               
+                                <div class="row">
+                                  <div class="col-4">
+                                    <label for="right_od_add">
+                                      ADD <button type="button" class="btn btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Required for bifocals, this value denotes how much power is added for near viewing. If you are ordering reading glasses, sometimes the ADD power is already included in the SPH power. If there is no ADD power written on your prescription, select the 'Single Vision Distance' option above.">?</button>
+                                    </label>
+                                  </div>
+                                  <div class="col-8">
+                                    <select id="right_od_add" name="right_od_add" class="form-control">
+                                      <option value="" selected="">--</option>
+                                      <option value="+0.50">+0.50</option>
+                                      <option value="+0.75">+0.75</option>
+                                      <option value="+1.00">+1.00</option>
+                                      <option value="+1.25">+1.25</option>
+                                      <option value="+1.50">+1.50</option>
+                                      <option value="+1.75">+1.75</option>
+                                      <option value="+2.00">+2.00</option>
+                                      <option value="+2.25">+2.25</option>
+                                      <option value="+2.50">+2.50</option>
+                                      <option value="+2.75">+2.75</option>
+                                      <option value="+3.00">+3.00</option>
+                                      <option value="+3.25">+3.25</option>
+                                      <option value="+3.50">+3.50</option>
+                                      <option value="+3.75">+3.75</option>
+                                      <option value="+4.00">+4.00</option>
+                                    </select>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                             <div class="col-6">
+                              <div id="left-oculus-sinister">Left OS</div>
+                              <div class="form-group mb-3">
+                                <div class="row">
+                                  <div class="col-4">
+                                    <label for="left_os_sph">
+                                      SPH <button type="button" class="btn btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="SPH or Sphere Power is the measurement of correction required for near-sightedness or far-sightedness expressed in diopters.">?</button>
+                                    </label>                                    
+                                  </div>
+                                  <div class="col-8">
+                                    <select id="left_os_sph" name="left_os_sph" class="form-control">
+                                      <option value="-10.00">-10.00</option>
+                                      <option value="-9.75">-9.75</option>
+                                      <option value="-9.50">-9.50</option>
+                                      <option value="-9.25">-9.25</option>
+                                      <option value="-9.00">-9.00</option>
+                                      <option value="-8.75">-8.75</option>
+                                      <option value="-8.50">-8.50</option>
+                                      <option value="-8.25">-8.25</option>
+                                      <option value="-8.00">-8.00</option>
+                                      <option value="-7.75">-7.75</option>
+                                      <option value="-7.50">-7.50</option>
+                                      <option value="-7.25">-7.25</option>
+                                      <option value="-7.00">-7.00</option>
+                                      <option value="-6.75">-6.75</option>
+                                      <option value="-6.50">-6.50</option>
+                                      <option value="-6.25">-6.25</option>
+                                      <option value="-6.00">-6.00</option>
+                                      <option value="-5.75">-5.75</option>
+                                      <option value="-5.50">-5.50</option>
+                                      <option value="-5.25">-5.25</option>
+                                      <option value="-5.00">-5.00</option>
+                                      <option value="-4.75">-4.75</option>
+                                      <option value="-4.50">-4.50</option>
+                                      <option value="-4.25">-4.25</option>
+                                      <option value="-4.00">-4.00</option>
+                                      <option value="-3.75">-3.75</option>
+                                      <option value="-3.50">-3.50</option>
+                                      <option value="-3.25">-3.25</option>
+                                      <option value="-3.00">-3.00</option>
+                                      <option value="-2.75">-2.75</option>
+                                      <option value="-2.50">-2.50</option>
+                                      <option value="-2.25">-2.25</option>
+                                      <option value="-2.00">-2.00</option>
+                                      <option value="-1.75">-1.75</option>
+                                      <option value="-1.50">-1.50</option>
+                                      <option value="-1.25">-1.25</option>
+                                      <option value="-1.00">-1.00</option>
+                                      <option value="-0.75">-0.75</option>
+                                      <option value="-0.50">-0.50</option>
+                                      <option value="-0.25">-0.25</option>
+                                      <option value="0.00">0.00</option>
+                                      <option value="" selected="">--</option>
+                                      <option value="0.00">PL</option>
+                                      <option value="0.00">Plano</option>
+                                      <option value="+0.25">+0.25</option>
+                                      <option value="+0.50">+0.50</option>
+                                      <option value="+0.75">+0.75</option>
+                                      <option value="+1.00">+1.00</option>
+                                      <option value="+1.25">+1.25</option>
+                                      <option value="+1.50">+1.50</option>
+                                      <option value="+1.75">+1.75</option>
+                                      <option value="+2.00">+2.00</option>
+                                      <option value="+2.25">+2.25</option>
+                                      <option value="+2.50">+2.50</option>
+                                      <option value="+2.75">+2.75</option>
+                                      <option value="+3.00">+3.00</option>
+                                      <option value="+3.25">+3.25</option>
+                                      <option value="+3.50">+3.50</option>
+                                      <option value="+3.75">+3.75</option>
+                                      <option value="+4.00">+4.00</option>
+                                      <option value="+4.25">+4.25</option>
+                                      <option value="+4.50">+4.50</option>
+                                      <option value="+4.75">+4.75</option>
+                                      <option value="+5.00">+5.00</option>
+                                      <option value="+5.25">+5.25</option>
+                                      <option value="+5.50">+5.50</option>
+                                      <option value="+5.75">+5.75</option>
+                                      <option value="+6.00">+6.00</option>
+                                      <option value="+6.25">+6.25</option>
+                                      <option value="+6.50">+6.50</option>
+                                      <option value="+6.75">+6.75</option>
+                                      <option value="+7.00">+7.00</option>
+                                      <option value="+7.25">+7.25</option>
+                                      <option value="+7.50">+7.50</option>
+                                      <option value="+7.75">+7.75</option>
+                                      <option value="+8.00">+8.00</option>
+                                    </select>                                    
+                                  </div>
+                                </div>                     
+                              </div>
                               <div class="form-group">
-                                <label for="left_oculus_sinister">Left OS</label>
-                                <select id="left_oculus_sinister" name="left_oculus_sinister" class="form-control">
-                                  <option value="" selected="">--</option>
-                                  <option value="+0.50">+0.50</option>
-                                  <option value="+0.75">+0.75</option>
-                                  <option value="+1.00">+1.00</option>
-                                  <option value="+1.25">+1.25</option>
-                                  <option value="+1.50">+1.50</option>
-                                  <option value="+1.75">+1.75</option>
-                                  <option value="+2.00">+2.00</option>
-                                  <option value="+2.25">+2.25</option>
-                                  <option value="+2.50">+2.50</option>
-                                  <option value="+2.75">+2.75</option>
-                                  <option value="+3.00">+3.00</option>
-                                  <option value="+3.25">+3.25</option>
-                                  <option value="+3.50">+3.50</option>
-                                  <option value="+3.75">+3.75</option>
-                                  <option value="+4.00">+4.00</option>
-                                </select>                               
-                              </div>                            
-                            </div>                              
+                                <div class="row">
+                                  <div class="col-4">
+                                    <label for="left_os_add">
+                                      ADD <button type="button" class="btn btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Required for bifocals, this value denotes how much power is added for near viewing. If you are ordering reading glasses, sometimes the ADD power is already included in the SPH power. If there is no ADD power written on your prescription, select the 'Single Vision Distance' option above.">?</button>
+                                    </label>                                    
+                                  </div>
+                                  <div class="col-8">
+                                    <select id="left_os_add" name="left_os_add" class="form-control">
+                                      <option value="" selected="">--</option>
+                                      <option value="+0.50">+0.50</option>
+                                      <option value="+0.75">+0.75</option>
+                                      <option value="+1.00">+1.00</option>
+                                      <option value="+1.25">+1.25</option>
+                                      <option value="+1.50">+1.50</option>
+                                      <option value="+1.75">+1.75</option>
+                                      <option value="+2.00">+2.00</option>
+                                      <option value="+2.25">+2.25</option>
+                                      <option value="+2.50">+2.50</option>
+                                      <option value="+2.75">+2.75</option>
+                                      <option value="+3.00">+3.00</option>
+                                      <option value="+3.25">+3.25</option>
+                                      <option value="+3.50">+3.50</option>
+                                      <option value="+3.75">+3.75</option>
+                                      <option value="+4.00">+4.00</option>
+                                    </select>                                    
+                                  </div>
+                                </div>                     
+                              </div>
+                            </div>
                           </div>
                           <div id="perscription-manual-pupillary-distance"></div>
                         </div>

@@ -128,7 +128,7 @@
 #customizeGlassesModal .tab-content .perscription-inner {
   text-align: left;
   width: 100%;
-  max-width: 384px;
+  max-width: 512px;
   padding: 1rem;
   margin: 0 auto 1rem;
 }
@@ -194,4 +194,14 @@
   width: 100%;
   margin: 0 auto 1rem;
   max-width: 512px;
+}
+
+.tooltip-question-mark {
+  font-size: 12px;
+  background: white;
+  width: 20px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid black;
 }
