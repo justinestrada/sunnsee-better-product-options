@@ -3,6 +3,10 @@
   color: #333;
 }
 
+select.form-control {
+  -webkit-appearance: auto !important;
+}
+
 .text-black {
   color: #333;
 }

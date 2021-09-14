@@ -84,16 +84,18 @@ const ProductOptions = {
     })
   },
   onSelectVision: function() {
+    const self = this
     $('#customizeGlassesModal [name="vision"]').on('change', function() {
       const val = $(this).val()
-      if (val === 'single_vision_prescription' || val === 'progressive') {
+      if (val === 'single_vision_rx' || val === 'progressive') {
         $('#customizeGlassesModal #prescription-fields-wrap').slideDown()
       } else {
         $('#customizeGlassesModal #prescription-fields-wrap').slideUp()
         $('#lens-tab, [go-to="lens"]').prop('disabled', false).removeAttr('disabled')
       }
-      ProductOptions.savedOptions.vision = $(this).val()
-      ProductOptions.isVisionComplete()
+      self.savedOptions.vision = $(this).val()
+      self.isVisionComplete()
+      self.togglePerscriptionManualOculus()
       // ProductOptions.updateProgress()
     })
   },
@@ -105,9 +107,7 @@ const ProductOptions = {
     });
   },
   onPerscriptionOptionsBtnClick: function() {
-    // $('#btn-perscription-upload, #btn-perscription-manual').on('click', function() {
-    //   alert('TODO: Show Pupillary Distance options!')
-    // })
+    const self = this
     $('#btn-perscription-upload').on('click', function() {
       $('#perscription-upload-your-rx').slideDown().addClass('active')
       $('#perscription-manual').slideUp().removeClass('active')
@@ -116,9 +116,9 @@ const ProductOptions = {
         const pupillary_distance_html = $('#perscription-manual-pupillary-distance').html()
         $('#perscription-manual-pupillary-distance').empty()
         $('#perscription-upload-pupillary-distance').html(pupillary_distance_html)
-        ProductOptions.initPupillaryDistance()
+        self.initPupillaryDistance()
       }
-      ProductOptions.isVisionComplete()
+      self.isVisionComplete()
     })
     $('#btn-perscription-manually').on('click', function() {
       $('#perscription-upload-your-rx').slideUp().removeClass('active')
@@ -128,10 +128,19 @@ const ProductOptions = {
         const pupillary_distance_html = $('#perscription-upload-pupillary-distance').html()
         $('#perscription-upload-pupillary-distance').empty()
         $('#perscription-manual-pupillary-distance').html(pupillary_distance_html)
-        ProductOptions.initPupillaryDistance()
+        self.initPupillaryDistance()
       }
-      ProductOptions.isVisionComplete()
+      self.togglePerscriptionManualOculus()
+      self.isVisionComplete()
     })
+  },
+  togglePerscriptionManualOculus: function() {
+    const selected_vision = $('#customizeGlassesModal [name="vision"]:checked').val()
+    if (selected_vision === 'single_vision_rx') {
+      $('.form-group_right-od-add, .form-group_left-os-add').hide()
+    } else if (selected_vision === 'progressive') {
+      $('.form-group_right-od-add, .form-group_left-os-add').show()
+    }
   },
   onPerscriptionUploadChange: function() {
     $('#prescription_file').on('change', function() {
