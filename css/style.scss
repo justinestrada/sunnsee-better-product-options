@@ -168,7 +168,8 @@ select.form-control {
     }
   }
 
-  .radio-options-wrap {
+  .radio-options-wrap,
+  .checkbox-options-wrap {
     list-style: none;
     padding-left: 0;
 
@@ -252,3 +253,37 @@ select.form-control {
   border: 1px solid black;
 }
 */
+
+.btn-continue {
+  height: 56px;
+  width: 100%;
+
+  &:hover .fa,
+  &:focus .fa {
+    color: #35a1dd;    
+  }
+
+  .fa {
+    display: inline-block;
+    color: white;
+    margin-left: 8px;
+  }
+}
+
+.circle {
+  border-radius: 100%;
+  height: 32px;
+  width: 32px;
+
+  &-grey {
+    background-color: grey;
+  }
+
+  &-amethyst {
+    background-color: purple;
+  }
+
+  &-sapphire {
+    background-color: red;
+  }
+}

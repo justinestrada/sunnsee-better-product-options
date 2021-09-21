@@ -40,7 +40,7 @@
 							<button class="nav-link" id="vision-tab" data-bs-toggle="tab" data-bs-target="#vision" type="button" role="tab" aria-controls="vision" aria-selected="false" disabled><i class="fa fa-check-circle"></i> Vision</button>
 						</li>
 						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="lens-tab" data-bs-toggle="tab" data-bs-target="#lens" type="button" role="tab" aria-controls="lens" aria-selected="false" disabled><i class="fa fa-check-circle"></i> Lens</button>
+							<button class="nav-link" id="lens-tab" data-bs-toggle="tab" data-bs-target="#lens" type="button" role="tab" aria-controls="lens" aria-selected="false" disabled><i class="fa fa-check-circle"></i> Lenses</button>
 						</li>
 						<li class="nav-item" role="presentation">
 							<button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false" disabled><i class="fa fa-check-circle"></i> Review</button>
@@ -49,7 +49,7 @@
 					<div class="tab-content py-4" id="customizeGlassesTabContent">
 						<div class="tab-pane fade show active py-4" id="color" role="tabpanel" aria-labelledby="color-tab">
 							<div class="text-center">
-								<h3 class="text-black mb-4">Select Color</h3>
+								<h3 id="select-color-label" class="text-black mb-4">Select Color</h3>
 							</div>
 							<ul id="color-options" class="radio-options-wrap row mb-4">
 								<li class="col-md-4 mb-3 mb-md-0">
@@ -82,7 +82,7 @@
 							</ul>
 							<div class="row">
 								<div class="col text-center">
-									<button class="btn-go-to btn btn-primary" go-to="vision" disabled>Continue</button>
+									<button class="btn-continue btn-go-to btn btn-primary" go-to="vision" disabled>Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 								</div>
 							</div>
 						</div>
@@ -446,7 +446,7 @@
                                   </div>
                                   <div class="col-8">
                                     <select name="right_od_cyl" id="right_od_cyl" class="form-control">
-<option value="" selected="">--</option><option value="">None</option><option value="-4.00">-4.00</option><option value="-3.75">-3.75</option><option value="-3.50">-3.50</option><option value="-3.25">-3.25</option><option value="-3.00">-3.00</option><option value="-2.75">-2.75</option><option value="-2.50">-2.50</option><option value="-2.25">-2.25</option><option value="-2.00">-2.00</option><option value="-1.75">-1.75</option><option value="-1.50">-1.50</option><option value="-1.25">-1.25</option><option value="-1.00">-1.00</option><option value="-0.75">-0.75</option><option value="-0.50">-0.50</option><option value="-0.25">-0.25</option><option value="+0.25">+0.25</option><option value="+0.50">+0.50</option><option value="+0.75">+0.75</option><option value="+1.00">+1.00</option><option value="+1.25">+1.25</option><option value="+1.50">+1.50</option><option value="+1.75">+1.75</option><option value="+2.00">+2.00</option><option value="+2.25">+2.25</option><option value="+2.50">+2.50</option><option value="+2.75">+2.75</option><option value="+3.00">+3.00</option><option value="+3.25">+3.25</option><option value="+3.50">+3.50</option><option value="+3.75">+3.75</option><option value="+4.00">+4.00</option>                                      
+<option value="" selected="">--</option><option value="none">None</option><option value="-4.00">-4.00</option><option value="-3.75">-3.75</option><option value="-3.50">-3.50</option><option value="-3.25">-3.25</option><option value="-3.00">-3.00</option><option value="-2.75">-2.75</option><option value="-2.50">-2.50</option><option value="-2.25">-2.25</option><option value="-2.00">-2.00</option><option value="-1.75">-1.75</option><option value="-1.50">-1.50</option><option value="-1.25">-1.25</option><option value="-1.00">-1.00</option><option value="-0.75">-0.75</option><option value="-0.50">-0.50</option><option value="-0.25">-0.25</option><option value="+0.25">+0.25</option><option value="+0.50">+0.50</option><option value="+0.75">+0.75</option><option value="+1.00">+1.00</option><option value="+1.25">+1.25</option><option value="+1.50">+1.50</option><option value="+1.75">+1.75</option><option value="+2.00">+2.00</option><option value="+2.25">+2.25</option><option value="+2.50">+2.50</option><option value="+2.75">+2.75</option><option value="+3.00">+3.00</option><option value="+3.25">+3.25</option><option value="+3.50">+3.50</option><option value="+3.75">+3.75</option><option value="+4.00">+4.00</option>                                      
                                     </select>
                                   </div>
                                 </div>
@@ -460,7 +460,7 @@
                                   </div>
                                   <div class="col-8">
                                     <select id="right_od_axis" name="right_od_axis" class="form-control">
-<option value="" selected="">--</option><option value="">None</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option><option value="77">77</option><option value="78">78</option><option value="79">79</option><option value="80">80</option><option value="81">81</option><option value="82">82</option><option value="83">83</option><option value="84">84</option><option value="85">85</option><option value="86">86</option><option value="87">87</option><option value="88">88</option><option value="89">89</option><option value="90">90</option><option value="91">91</option><option value="92">92</option><option value="93">93</option><option value="94">94</option><option value="95">95</option><option value="96">96</option><option value="97">97</option><option value="98">98</option><option value="99">99</option><option value="100">100</option><option value="101">101</option><option value="102">102</option><option value="103">103</option><option value="104">104</option><option value="105">105</option><option value="106">106</option><option value="107">107</option><option value="108">108</option><option value="109">109</option><option value="110">110</option><option value="111">111</option><option value="112">112</option><option value="113">113</option><option value="114">114</option><option value="115">115</option><option value="116">116</option><option value="117">117</option><option value="118">118</option><option value="119">119</option><option value="120">120</option><option value="121">121</option><option value="122">122</option><option value="123">123</option><option value="124">124</option><option value="125">125</option><option value="126">126</option><option value="127">127</option><option value="128">128</option><option value="129">129</option><option value="130">130</option><option value="131">131</option><option value="132">132</option><option value="133">133</option><option value="134">134</option><option value="135">135</option><option value="136">136</option><option value="137">137</option><option value="138">138</option><option value="139">139</option><option value="140">140</option><option value="141">141</option><option value="142">142</option><option value="143">143</option><option value="144">144</option><option value="145">145</option><option value="146">146</option><option value="147">147</option><option value="148">148</option><option value="149">149</option><option value="150">150</option><option value="151">151</option><option value="152">152</option><option value="153">153</option><option value="154">154</option><option value="155">155</option><option value="156">156</option><option value="157">157</option><option value="158">158</option><option value="159">159</option><option value="160">160</option><option value="161">161</option><option value="162">162</option><option value="163">163</option><option value="164">164</option><option value="165">165</option><option value="166">166</option><option value="167">167</option><option value="168">168</option><option value="169">169</option><option value="170">170</option><option value="171">171</option><option value="172">172</option><option value="173">173</option><option value="174">174</option><option value="175">175</option><option value="176">176</option><option value="177">177</option><option value="178">178</option><option value="179">179</option><option value="180">180</option>
+<option value="" selected="">--</option><option value="none">None</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option><option value="77">77</option><option value="78">78</option><option value="79">79</option><option value="80">80</option><option value="81">81</option><option value="82">82</option><option value="83">83</option><option value="84">84</option><option value="85">85</option><option value="86">86</option><option value="87">87</option><option value="88">88</option><option value="89">89</option><option value="90">90</option><option value="91">91</option><option value="92">92</option><option value="93">93</option><option value="94">94</option><option value="95">95</option><option value="96">96</option><option value="97">97</option><option value="98">98</option><option value="99">99</option><option value="100">100</option><option value="101">101</option><option value="102">102</option><option value="103">103</option><option value="104">104</option><option value="105">105</option><option value="106">106</option><option value="107">107</option><option value="108">108</option><option value="109">109</option><option value="110">110</option><option value="111">111</option><option value="112">112</option><option value="113">113</option><option value="114">114</option><option value="115">115</option><option value="116">116</option><option value="117">117</option><option value="118">118</option><option value="119">119</option><option value="120">120</option><option value="121">121</option><option value="122">122</option><option value="123">123</option><option value="124">124</option><option value="125">125</option><option value="126">126</option><option value="127">127</option><option value="128">128</option><option value="129">129</option><option value="130">130</option><option value="131">131</option><option value="132">132</option><option value="133">133</option><option value="134">134</option><option value="135">135</option><option value="136">136</option><option value="137">137</option><option value="138">138</option><option value="139">139</option><option value="140">140</option><option value="141">141</option><option value="142">142</option><option value="143">143</option><option value="144">144</option><option value="145">145</option><option value="146">146</option><option value="147">147</option><option value="148">148</option><option value="149">149</option><option value="150">150</option><option value="151">151</option><option value="152">152</option><option value="153">153</option><option value="154">154</option><option value="155">155</option><option value="156">156</option><option value="157">157</option><option value="158">158</option><option value="159">159</option><option value="160">160</option><option value="161">161</option><option value="162">162</option><option value="163">163</option><option value="164">164</option><option value="165">165</option><option value="166">166</option><option value="167">167</option><option value="168">168</option><option value="169">169</option><option value="170">170</option><option value="171">171</option><option value="172">172</option><option value="173">173</option><option value="174">174</option><option value="175">175</option><option value="176">176</option><option value="177">177</option><option value="178">178</option><option value="179">179</option><option value="180">180</option>
                                     </select>
                                   </div>
                                 </div>
@@ -657,7 +657,7 @@
 										<button class="btn-go-to btn btn-outline-primary" go-to="color">Previous</button>
 									</div> -->
 									<div class="col text-center">
-										<button id="btn-primary-go-to-lens" class="btn-go-to btn btn-primary" go-to="lens" disabled>Continue</button>
+										<button id="btn-primary-go-to-lens" class="btn-continue btn-go-to btn btn-primary" go-to="lens" disabled>Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 									</div>
 								</div>										
 							</div>
@@ -676,84 +676,129 @@
 						</div>
 						<div class="tab-pane fade py-4" id="lens" role="tabpanel" aria-labelledby="vision-tab">
               <div class="text-center">
+                <h3 class="mb-4">Select Lens Material</h3>
+              </div>
+              <ul id="lens-options" class="radio-options-wrap row mb-4">
+                <li class="col">
+                  <input type="radio" id="lens_polycarbonate" name="lens_material" value="polycarbonate"/>
+                  <label for="lens_polycarbonate" class="card h-100">
+                    <!-- <img src="https://cdn.shopify.com/s/files/1/0333/8882/2661/products/LUCIO-AMB-1_df6dc769-3ff9-4dec-8805-80bfbeab8cd8_750x750.png" class="card-img-top" alt="Rain"/> -->
+                    <div class="card-body text-center">
+                      <div>
+                        <h5 class="card-title">Polycarbonate</h5>
+                        <div class="card-text">
+                          <p>Included</p>
+                          <p class="mb-0">SunNSee Premium impact-resistance 1.59 lenses included free.</p>
+                        </p>                        
+                      </div>
+                    </div>
+                  </label>
+                </li>
+                <li class="col">
+                  <input type="radio" id="lens_high_index" name="lens_material" value="high_index"/>
+                  <label for="lens_high_index" class="card h-100">
+                    <!-- <img src="https://cdn.shopify.com/s/files/1/0333/8882/2661/products/LUCIO-AMB-1_df6dc769-3ff9-4dec-8805-80bfbeab8cd8_750x750.png" class="card-img-top" alt="Rain"/> -->
+                    <div class="card-body text-center">
+                      <div>
+                        <h5 class="card-title">High-Index</h5>
+                        <div class="card-text">
+                          <p>$25.00</p>
+                          <p>Ultra-light and thin lenses recommended for prescription stronger than +/-2.50</p>
+                          <p id="high-index-recommended" class="mb-0" style="display: none;">
+                            <small>*Based on your prescription, we recommend High-Index Lenses</small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                </li>
+              </ul> 
+              <div class="text-center">
                 <h3 class="mb-4">Select Lens Coating</h3>
               </div>
-              <ul id="lens-coating" class="radio-options-wrap row mb-4">
+              <ul id="lens-coating" class="checkbox-options-wrap row mb-4">
                 <li class="col-md-4 mb-3 mb-md-0">
-                  <input type="radio" id="lens_coating_clear" name="lens_coating" value="clear"/>
-                  <label for="lens_coating_clear" class="card h-100">
+                  <input type="checkbox" id="lens_coating_premium" name="lens_coating" value="clear"/>
+                  <label for="lens_coating_premium" class="card h-100">
                     <div class="card-body text-center">
                       <div>
-                        <h5>Clear</h5>
-                        <p>Transparent lens for everyday use.</p>
+                        <h5>Premium</h5>
+                        <p class="mb-0">Anti-Reflective (AR), super hydrophobic, oleophobic, and scratch resistance. Included free of charge.</p>
                       </div>
                     </div>
                   </label>
                 </li>
                 <li class="col-md-4 mb-3 mb-md-0">
-                  <input type="radio" id="lens_coating_blue_light" name="lens_coating" value="blue_light"/>
-                  <label for="lens_coating_blue_light" class="card h-100">
+                  <input type="checkbox" id="lens_coating_blue_filter" name="lens_coating" value="blue_filter"/>
+                  <label for="lens_coating_blue_filter" class="card h-100">
                     <div class="card-body text-center">
                       <div>
-                        <h5>Blue Light Blocking</h5>
-                        <p>Protection from digital screens.</p>
+                        <h5>Blue Filter</h5>
+                        <p>$15</p>
+                        <p class="mb-0">Protects your eyes from harmful artificial blue light and reduces digital eye-strain. Recommended for long-screen time users.</p>
                       </div>
                     </div>
                   </label>
                 </li>
                 <li class="col-md-4 mb-3 mb-md-0">
-                  <input type="radio" id="lens_coating_light_adaptive" name="lens_coating" value="light_adaptive"/>
-                  <label for="lens_coating_light_adaptive" class="card h-100">
+                  <input type="checkbox" id="lens_coating_transitions" name="lens_coating" value="light_adaptive"/>
+                  <label for="lens_coating_transitions" class="card h-100">
                     <div class="card-body text-center">
                       <div>
-                        <h5>Light Adaptive</h5>
-                        <p>Indoor and outdoor use that go from clear to dark.</p>
+                        <h5>Transitions<sup>&reg;</sup></h5>
+                        <p>$95</p>
+                        <p class="mb-0">Automatically adapt to light changing environments. Quickly adapt from clear indoor lenses to dark outdoor lenses in seconds.</p>
                       </div>
                     </div>
                   </label>
                 </li>
               </ul>
-							<div class="text-center">
-								<h3 class="mb-4">Select Lens Material</h3>
-							</div>
-							<ul id="lens-options" class="radio-options-wrap row mb-4">
-								<li class="col">
-									<input type="radio" id="lens_polycarbonate" name="lens" value="polycarbonate"/>
-									<label for="lens_polycarbonate" class="card h-100">
-										<!-- <img src="https://cdn.shopify.com/s/files/1/0333/8882/2661/products/LUCIO-AMB-1_df6dc769-3ff9-4dec-8805-80bfbeab8cd8_750x750.png" class="card-img-top" alt="Rain"/> -->
-										<div class="card-body text-center">
-                      <div>
-                        <h5 class="card-title">Polycarbonate</h5>
-                        <p class="card-text">Polycarbonate lenses are ultra-durable, ultra-lightweight lenses. They are more than 10-times more impact resistant than your average plastic or glass lens. While they're not the thinnest kind of lens out there, they still retain their position as the swiss-army-knife of eyewear lenses.</p>                        
+              <div id="select-transitions-color" class="mb-4" style="display: none;">
+                <div class="text-center">
+                  <h3 class="mb-4">Select Transition Color</h3>                  
+                </div>
+                <ul id="transition-color" class="radio-options-wrap row">
+                  <li class="col-md-4 mb-3 mb-md-0">
+                    <input type="radio" id="transition_color_grey" name="transition_color" value="grey"/>
+                    <label for="transition_color_grey" class="card h-100">
+                      <div class="card-body text-center">
+                        <div>
+                          <div class="circle circle-grey mx-auto mb-1"></div>
+                          <h6>Grey</h6>
+                        </div>
                       </div>
-										</div>
-									</label>
-								</li>
-								<li class="col">
-									<input type="radio" id="lens_high_index" name="lens" value="high_index"/>
-									<label for="lens_high_index" class="card h-100">
-										<!-- <img src="https://cdn.shopify.com/s/files/1/0333/8882/2661/products/LUCIO-AMB-1_df6dc769-3ff9-4dec-8805-80bfbeab8cd8_750x750.png" class="card-img-top" alt="Rain"/> -->
-										<div class="card-body text-center">
-                      <div>
-                        <h5 class="card-title">High-Index</h5>
-                        <p class="card-text">A high index lens is a lens that has a higher "index" of refraction. This means it has a greater ability to bend light rays to provide clear vision for people with stronger prescription glasses. High index lenses are manufactured to be thinner at the edges of the lens and lighter in weight overall.</p>                        
+                    </label>
+                  </li>
+                  <li class="col-md-4 mb-3 mb-md-0">
+                    <input type="radio" id="transition_color_sapphire" name="transition_color" value="sapphire"/>
+                    <label for="transition_color_sapphire" class="card h-100">
+                      <div class="card-body text-center">
+                        <div>
+                          <div class="circle circle-sapphire mx-auto mb-1"></div>
+                          <h6>Sapphire</h6>
+                        </div>
                       </div>
-										</div>
-									</label>
-								</li>
-							</ul>
-							<div class="form-check mb-4">
-							  <input class="form-check-input" type="checkbox" value="add_blue_light_coating" id="addBluelightCoating"/>
-							  <label class="form-check-label" for="addBluelightCoating">
-							    Add Bluelight Coating?
-							  </label>
-							</div>
+                    </label>
+                  </li>
+                  <li class="col-md-4 mb-3 mb-md-0">
+                    <input type="radio" id="transition_color_amethyst" name="transition_color" value="amethyst"/>
+                    <label for="transition_color_amethyst" class="card h-100">
+                      <div class="card-body text-center">
+                        <div>
+                          <div class="circle circle-amethyst mx-auto mb-1"></div>
+                          <h6>Amethyst</h6>
+                        </div>
+                      </div>
+                    </label>
+                  </li>
+                </ul>
+              </div>
 							<div class="row">
 								<!-- <div class="col-6">
 									<button class="btn-go-to btn btn-outline-primary" go-to="vision">Previous</button>
 								</div> -->
 								<div class="col text-center">
-									<button class="btn-go-to btn btn-primary" go-to="review" disabled>Continue</button>
+									<button class="btn-continue btn-go-to btn btn-primary" go-to="review" disabled>Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 								</div>
 							</div>
 						</div>
@@ -772,7 +817,7 @@
 										<td id="review-vision" class="review-value">{vision}</td>
 									</tr>
 									<tr>
-										<td>Lens</td>
+										<td>Lenses</td>
 										<td id="review-lens" class="review-value">{lens}</td>
 									</tr>
 								</tbody>

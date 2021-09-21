@@ -39,7 +39,7 @@ const ProductOptions = {
     this.onClickGoTo()
     this.onSelectColor()
     this.initVision()
-    this.onSelectLens()
+    this.initLens()
   },
   onClickGoTo: function() {
     $('.btn-go-to').on('click', function() {
@@ -148,7 +148,19 @@ const ProductOptions = {
     })
   },
   onPerscriptionManualChange: function() {
-    $('#right_oculus_dexter, #left_oculus_sinister').on('change', function() {
+    $('#right_od_sph, #left_os_sph, #right_od_cyl, #left_os_cyl, #right_od_axis, #left_os_axis, #right_od_add, #left_os_add').on('change', function() {
+      // 
+      // if SPH or CYL is greater than 2.5
+      const right_od_sph = parseFloat($('#right_od_sph').val().replace('+', ''))
+      const left_os_sph = parseFloat($('#left_os_sph').val().replace('+', ''))
+      const right_od_cyl = parseFloat($('#right_od_cyl').val().replace('+', ''))
+      const left_os_cyl = parseFloat($('#left_os_cyl').val().replace('+', ''))
+      // TODO: confirm with Abel that it's greater than or equal to 2.5
+      if (right_od_sph >= 2.5 || left_os_sph >= 2.5 || right_od_cyl >= 2.5 || left_os_cyl >= 2.5) {
+        $('#high-index-recommended').show()
+      } else {
+        $('#high-index-recommended').hide()        
+      }
       ProductOptions.isVisionComplete()
     })
   },
@@ -180,9 +192,15 @@ const ProductOptions = {
     return (perscription_file_val !== '') ? true : false
   },
   isVisionManualComplete: function() {
-    const right_oculus_dexter_val = $('#right_oculus_dexter').val()
-    const left_oculus_sinister = $('#left_oculus_sinister').val()
-    if (right_oculus_dexter_val === '' || left_oculus_sinister === '') {
+    const right_od_sph = $('#right_od_sph').val()
+    const left_os_sph = $('#left_os_sph').val()
+    const right_od_cyl = $('#right_od_cyl').val()
+    const left_os_cyl = $('#left_os_cyl').val()
+    const right_od_axis = $('#right_od_axis').val()
+    const left_os_axis = $('#left_os_axis').val()
+    const right_od_add = $('#right_od_add').val()
+    const left_os_add = $('#left_os_add').val()
+    if (right_od_sph === '' || left_os_sph === '' || right_od_cyl === '' || left_os_cyl === '' || right_od_axis === '' || left_os_axis === '' || right_od_add === '' || left_os_add === '') {
       return false
     }
     return true
@@ -233,12 +251,34 @@ const ProductOptions = {
       $('#vision-content').show()
     })
   },
-  onSelectLens: function() {
-    $('#customizeGlassesModal [name="lens"]').on('change', function() {
-      $('#review-tab, [go-to="review"]').prop('disabled', false).removeAttr('disabled')
-      ProductOptions.savedOptions.lens = $(this).val()
-      // ProductOptions.updateProgress()
+  initLenses: function() {
+    this.onSelectLensMaterial()
+    this.onSelectLensCoating()
+  },
+  onSelectLensMaterial: function() {
+    const self = this
+    $('#customizeGlassesModal [name="lens_material"]').on('change', function() {
+      self.isLensesComplete()
     })
+  },
+  onSelectLensCoating: function() {
+    $('#customizeGlassesModal [name="lens_coating"]').on('change', function() {
+      const selected_lens_coating = $('#customizeGlassesModal [name="lens_coating"]:checked').val()
+      if (selected_lens_coating === 'light_adaptive') {
+        $('#select-transitions-color').show()        
+      } else {
+        $('#select-transitions-color').hide()
+      }
+    })
+  },
+  isLensesComplete: function() {
+    const selected_lens_material = $('#customizeGlassesModal [name="lens_material"]:checked').val()
+    const selected_lens_coating = $('#customizeGlassesModal [name="lens_coating"]:checked').val()
+    if (selected_lens_material !== undefined && selected_lens_coating !== undefined) {
+      $('#review-tab, [go-to="review"]').prop('disabled', false).removeAttr('disabled')
+    } else {
+      $('#review-tab, [go-to="review"]').prop('disabled', true)
+    }
   },
   /*
   updateProgress: function( step, step_value ) {
