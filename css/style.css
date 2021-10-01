@@ -31,7 +31,9 @@ select.form-control {
   background-color: #fff;
   border-color: #35a1dd;
 }
-.btn-outline-primary:hover, .btn-outline-primary:focus {
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
   color: #fff;
   background-color: #35a1dd;
   border-color: #35a1dd;
@@ -155,10 +157,13 @@ select.form-control {
 }
 #customizeGlassesModal .radio-options-wrap input[type=radio]:checked + label,
 #customizeGlassesModal .checkbox-options-wrap input[type=checkbox]:checked + label {
-  cursor: default;
   border: 2px solid #35a1dd;
   -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+#customizeGlassesModal .radio-options-wrap input[type=radio]:checked + label,
+#customizeGlassesModal .checkbox-options-wrap input[type=checkbox]:disabled + label {
+  cursor: default;
 }
 #customizeGlassesModal .radio-options-wrap input[type=radio]:checked + label .card-title,
 #customizeGlassesModal .checkbox-options-wrap input[type=checkbox]:checked + label .card-title {
@@ -222,6 +227,10 @@ select.form-control {
   width: 100%;
 }
 
+.btn-continue:disabled {
+  cursor: not-allowed;
+}
+
 .btn-continue:hover .fa,
 .btn-continue:focus .fa {
   color: #35a1dd;
@@ -249,4 +258,8 @@ select.form-control {
 
 .circle-sapphire {
   background-color: red;
+}
+
+.circle-brown {
+  background-color: brown;
 }

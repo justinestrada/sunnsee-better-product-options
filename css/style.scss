@@ -173,11 +173,11 @@ select.form-control {
     list-style: none;
     padding-left: 0;
 
-    input[type="radio"] {
+    input[type="radio"],
+    input[type="checkbox"] {
       display: none;
 
       &:checked + label {
-        cursor: default;
         border: 2px solid #35a1dd;
         -webkit-box-shadow: 0 10px 15px -3px rgb(0 0 0 / 7%), 0 4px 6px -2px rgb(0 0 0 / 5%);
         box-shadow: 0 10px 15px -3px rgb(0 0 0 / 7%), 0 4px 6px -2px rgb(0 0 0 / 5%);
@@ -186,6 +186,11 @@ select.form-control {
           color: #35a1dd;
         }
       }
+    }
+
+    input[type="radio"]:checked + label,
+    input[type="checkbox"]:disabled + label {
+      cursor: default;
     }
 
     label {
@@ -258,6 +263,10 @@ select.form-control {
   height: 56px;
   width: 100%;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &:hover .fa,
   &:focus .fa {
     color: #35a1dd;    
@@ -285,5 +294,9 @@ select.form-control {
 
   &-sapphire {
     background-color: red;
+  }
+
+  &-brown {
+    background-color: brown;
   }
 }

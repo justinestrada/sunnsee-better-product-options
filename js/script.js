@@ -27,11 +27,11 @@ const Cookie = {
 };
 
 const ProductOptions = {
-  savedOptions: {
-    color: null,
-    vision: null,
-    lens: null,
-  },
+  // savedOptions: {
+  //   color: null,
+  //   vision: null,
+  //   lens: null,
+  // },
   onLoad: function() {
     if (!$('#customizeGlassesModal').length) {
       return;
@@ -39,14 +39,14 @@ const ProductOptions = {
     this.onClickGoTo()
     this.onSelectColor()
     this.initVision()
-    this.initLens()
+    this.initLenses()
   },
   onClickGoTo: function() {
     $('.btn-go-to').on('click', function() {
       const goto = $(this).attr('go-to')
       if (goto === 'vision') {
         $('#color-tab').addClass('complete')
-      } else if (goto === 'lens') {
+      } else if (goto === 'lenses') {
         /*
         const vision_val = $('#customizeGlassesModal [name="vision"]:checked').val()
         if (vision_val === 'progressive') {
@@ -57,17 +57,17 @@ const ProductOptions = {
         }
         */
         $('#vision-tab').addClass('complete')
-      }
-      $('#customizeGlassesTab #' + goto + '-tab').tab('show')
-      if (goto === 'review') {
+      } else if (goto === 'review') {
+        $('#lenses-tab').addClass('complete')
         ProductOptions.initReview()
       }
+      $('#customizeGlassesTab #' + goto + '-tab').tab('show')
     })
   },
   onSelectColor: function() {
     $('#customizeGlassesModal [name="color"]').on('change', function() {
       $('#vision-tab, [go-to="vision"]').prop('disabled', false).removeAttr('disabled')
-      ProductOptions.savedOptions.color = $(this).val()
+      // ProductOptions.savedOptions.color = $(this).val()
       // ProductOptions.updateProgress()
     })
   },
@@ -80,7 +80,7 @@ const ProductOptions = {
     this.initPupillaryDistance()
     $('.link-skip-vision-step').on('click', function() {
       $('#vision-tab').addClass('complete')
-      $('#customizeGlassesTab #lens-tab').tab('show')      
+      $('#customizeGlassesTab #lenses-tab').tab('show')      
     })
   },
   onSelectVision: function() {
@@ -91,9 +91,9 @@ const ProductOptions = {
         $('#customizeGlassesModal #prescription-fields-wrap').slideDown()
       } else {
         $('#customizeGlassesModal #prescription-fields-wrap').slideUp()
-        $('#lens-tab, [go-to="lens"]').prop('disabled', false).removeAttr('disabled')
+        $('#lenses-tab, [go-to="lenses"]').prop('disabled', false).removeAttr('disabled')
       }
-      self.savedOptions.vision = $(this).val()
+      // self.savedOptions.vision_type = $(this).val()
       self.isVisionComplete()
       self.togglePerscriptionManualOculus()
       // ProductOptions.updateProgress()
@@ -181,9 +181,9 @@ const ProductOptions = {
       }  
     }
     if (is_complete) {
-      $('#lens-tab, [go-to="lens"]').prop('disabled', false).removeAttr('disabled')
+      $('#lenses-tab, [go-to="lenses"]').prop('disabled', false).removeAttr('disabled')
     } else {
-      $('#lens-tab, [go-to="lens"]').prop('disabled', true)
+      $('#lenses-tab, [go-to="lenses"]').prop('disabled', true)
     }
     return is_complete
   },
@@ -263,8 +263,11 @@ const ProductOptions = {
   },
   onSelectLensCoating: function() {
     $('#customizeGlassesModal [name="lens_coating"]').on('change', function() {
-      const selected_lens_coating = $('#customizeGlassesModal [name="lens_coating"]:checked').val()
-      if (selected_lens_coating === 'light_adaptive') {
+      let selected_lens_coatings = [];
+      $('[name="lens_coating"]:checked').each(function() {
+        selected_lens_coatings.push($(this).val());
+      });
+      if (selected_lens_coatings.includes('light_adaptive')) {
         $('#select-transitions-color').show()        
       } else {
         $('#select-transitions-color').hide()
@@ -297,9 +300,57 @@ const ProductOptions = {
   },
   */
   initReview: function() {
-    $('#review-color').text( ProductOptions.savedOptions.color.replace('_', ' ') )
-    $('#review-vision').text( ProductOptions.savedOptions.vision.replace('_', ' ') )
-    $('#review-lens').text( ProductOptions.savedOptions.lens.replace('_', ' ') )
+    // Color
+    const selected_color_label = $('[name="color"]:checked').next().find('.card-title').text()
+    $('#review-color').html( selected_color_label )
+    // Vision
+    const selected_vision_type_label = $('[name="vision"]:checked').next().find('.card-title').text()
+    $('#review-vision-type').html( selected_vision_type_label )
+    // Prescription Type
+    if ($('[name="vision"]:checked').val() !== 'non_prescription') {
+      let review_prescription_type_html = '<div>'
+        if ($('#perscription-upload-your-rx').hasClass('active')) {
+          const prescription_file = $('#prescription_file').val()
+          review_prescription_type_html += prescription_file
+        } else if ($('#perscription-manual').hasClass('active')) {
+          review_prescription_type_html += this.getReviewPerscriptionTypeManualHTML()
+        }
+        // TODO: Get Pupillary Distance
+      review_prescription_type_html += '</div>'
+      $('#review-prescription-type_value').html( review_prescription_type_html )
+      $('#review-prescription-type').show()
+    } else {
+      $('#review-prescription-type_value').empty()
+      $('#review-prescription-type').hide()
+    }
+  },
+  getReviewPerscriptionTypeManualHTML: function() {
+    const right_od_sph = $('#right_od_sph').val()
+    const left_os_sph = $('#left_os_sph').val()
+    const right_od_cyl = $('#right_od_cyl').val()
+    const left_os_cyl = $('#left_os_cyl').val()
+    const right_od_axis = $('#right_od_axis').val()
+    const left_os_axis = $('#left_os_axis').val()
+    // const right_od_add = $('#right_od_add').val() // TODO
+    // const left_os_add = $('#left_os_add').val() // TODO
+    const html = '\
+      <div class="row">\
+        <div class="col-6">Right Oculus<br/>Dextrus (OD)</div>\
+        <div class="col-6">Left Oculus<br/>Sinister (OS)</div>\
+      </div>\
+      <div class="row">\
+        <div class="col-6">SPH ' + right_od_sph + '</div>\
+        <div class="col-6">SPH ' + left_os_sph + '</div>\
+      </div>\
+      <div class="row">\
+        <div class="col-6">CYL ' + right_od_cyl + '</div>\
+        <div class="col-6">CYL ' + left_os_sph + '</div>\
+      </div>\
+      <div class="row">\
+        <div class="col-6">AXIS ' + right_od_axis + '</div>\
+        <div class="col-6">AXIS ' + left_os_axis + '</div>\
+      </div>'
+    return html
   },
 }
 

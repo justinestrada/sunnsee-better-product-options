@@ -40,7 +40,7 @@
 							<button class="nav-link" id="vision-tab" data-bs-toggle="tab" data-bs-target="#vision" type="button" role="tab" aria-controls="vision" aria-selected="false" disabled><i class="fa fa-check-circle"></i> Vision</button>
 						</li>
 						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="lens-tab" data-bs-toggle="tab" data-bs-target="#lens" type="button" role="tab" aria-controls="lens" aria-selected="false" disabled><i class="fa fa-check-circle"></i> Lenses</button>
+							<button class="nav-link" id="lenses-tab" data-bs-toggle="tab" data-bs-target="#lenses" type="button" role="tab" aria-controls="lenses" aria-selected="false" disabled><i class="fa fa-check-circle"></i> Lenses</button>
 						</li>
 						<li class="nav-item" role="presentation">
 							<button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false" disabled><i class="fa fa-check-circle"></i> Review</button>
@@ -648,7 +648,7 @@
                           <div id="perscription-manual-pupillary-distance"></div>
                         </div>
                       </div>
-											<p style="margin: 0;">Don't know it? We can <a href="javascript:void(0);" go-to="lens" class="link-skip-vision-step text-black">skip this step</a> and add it later.</p>
+											<p style="margin: 0;">Don't know it? We can <a href="javascript:void(0);" go-to="lenses" class="link-skip-vision-step text-black">skip this step</a> and add it later.</p>
 										</div>
 									</div>
 								</div>
@@ -657,7 +657,7 @@
 										<button class="btn-go-to btn btn-outline-primary" go-to="color">Previous</button>
 									</div> -->
 									<div class="col text-center">
-										<button id="btn-primary-go-to-lens" class="btn-continue btn-go-to btn btn-primary" go-to="lens" disabled>Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+										<button id="btn-primary-go-to-lenses" class="btn-continue btn-go-to btn btn-primary" go-to="lenses" disabled>Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 									</div>
 								</div>										
 							</div>
@@ -674,7 +674,7 @@
 								<p>If your Pupillary Distance consists of two numbers, it is measured as the distance between the centers of each pupil to the bridge of the nose. Dual Pupillary distances are usually written in this format: #/#. The first number is the right eye, and second number refers to the left eye. Both numbers should be less than 40. If your prescription has a different PD measurement for each eye, click "I have more than one PD" to enter in both values. Click here to measure your PD using our tool.</p>
 							</div>
 						</div>
-						<div class="tab-pane fade py-4" id="lens" role="tabpanel" aria-labelledby="vision-tab">
+						<div class="tab-pane fade py-4" id="lenses" role="tabpanel" aria-labelledby="vision-tab">
               <div class="text-center">
                 <h3 class="mb-4">Select Lens Material</h3>
               </div>
@@ -718,11 +718,12 @@
               </div>
               <ul id="lens-coating" class="checkbox-options-wrap row mb-4">
                 <li class="col-md-4 mb-3 mb-md-0">
-                  <input type="checkbox" id="lens_coating_premium" name="lens_coating" value="clear"/>
-                  <label for="lens_coating_premium" class="card h-100">
+                  <input type="checkbox" id="lens_coating_ar" name="lens_coating" value="ar" checked disabled/>
+                  <label for="lens_coating_ar" class="card h-100">
                     <div class="card-body text-center">
                       <div>
-                        <h5>Premium</h5>
+                        <h5>SunNSee AR</h5>
+                        <p>Included</p>
                         <p class="mb-0">Anti-Reflective (AR), super hydrophobic, oleophobic, and scratch resistance. Included free of charge.</p>
                       </div>
                     </div>
@@ -758,7 +759,7 @@
                   <h3 class="mb-4">Select Transition Color</h3>                  
                 </div>
                 <ul id="transition-color" class="radio-options-wrap row">
-                  <li class="col-md-4 mb-3 mb-md-0">
+                  <li class="col-6 mb-3 mb-md-0">
                     <input type="radio" id="transition_color_grey" name="transition_color" value="grey"/>
                     <label for="transition_color_grey" class="card h-100">
                       <div class="card-body text-center">
@@ -769,24 +770,13 @@
                       </div>
                     </label>
                   </li>
-                  <li class="col-md-4 mb-3 mb-md-0">
-                    <input type="radio" id="transition_color_sapphire" name="transition_color" value="sapphire"/>
-                    <label for="transition_color_sapphire" class="card h-100">
+                  <li class="col-6 mb-3 mb-md-0">
+                    <input type="radio" id="transition_color_brown" name="transition_color" value="brown"/>
+                    <label for="transition_color_brown" class="card h-100">
                       <div class="card-body text-center">
                         <div>
-                          <div class="circle circle-sapphire mx-auto mb-1"></div>
-                          <h6>Sapphire</h6>
-                        </div>
-                      </div>
-                    </label>
-                  </li>
-                  <li class="col-md-4 mb-3 mb-md-0">
-                    <input type="radio" id="transition_color_amethyst" name="transition_color" value="amethyst"/>
-                    <label for="transition_color_amethyst" class="card h-100">
-                      <div class="card-body text-center">
-                        <div>
-                          <div class="circle circle-amethyst mx-auto mb-1"></div>
-                          <h6>Amethyst</h6>
+                          <div class="circle circle-brown mx-auto mb-1"></div>
+                          <h6>Brown</h6>
                         </div>
                       </div>
                     </label>
@@ -813,18 +803,22 @@
 										<td id="review-color" class="review-value">{color}</td>
 									</tr>
 									<tr>
-										<td>Vision</td>
-										<td id="review-vision" class="review-value">{vision}</td>
+										<td>Vision Type</td>
+										<td id="review-vision-type" class="review-value">{vision}</td>
 									</tr>
+                  <tr id="review-prescription-type">
+                    <td>Prescription Type</td>
+                    <td id="review-prescription-type_value" class="review-value">{vision}</td>
+                  </tr>
 									<tr>
 										<td>Lenses</td>
-										<td id="review-lens" class="review-value">{lens}</td>
+										<td id="review-lenses" class="review-value">{lens}</td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="row">
 								<!-- <div class="col-6">
-									<button class="btn-go-to btn btn-outline-primary" go-to="lens">Previous</button>
+									<button class="btn-go-to btn btn-outline-primary" go-to="lenses">Previous</button>
 								</div> -->
 								<div class="col text-center">
 									<a href="/checkout" class="btn btn-primary">Add To Cart</a>
