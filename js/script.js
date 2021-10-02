@@ -138,8 +138,10 @@ const ProductOptions = {
     const selected_vision = $('#customizeGlassesModal [name="vision"]:checked').val()
     if (selected_vision === 'single_vision_rx') {
       $('.form-group_right-od-add, .form-group_left-os-add').hide()
+      $('.form-group_right-od-add, .form-group_left-os-add').prop('required', false).removeAttr('required')
     } else if (selected_vision === 'progressive') {
       $('.form-group_right-od-add, .form-group_left-os-add').show()
+      $('.form-group_right-od-add, .form-group_left-os-add').prop('required', true)
     }
   },
   onPerscriptionUploadChange: function() {
@@ -198,10 +200,17 @@ const ProductOptions = {
     const left_os_cyl = $('#left_os_cyl').val()
     const right_od_axis = $('#right_od_axis').val()
     const left_os_axis = $('#left_os_axis').val()
-    const right_od_add = $('#right_od_add').val()
-    const left_os_add = $('#left_os_add').val()
-    if (right_od_sph === '' || left_os_sph === '' || right_od_cyl === '' || left_os_cyl === '' || right_od_axis === '' || left_os_axis === '' || right_od_add === '' || left_os_add === '') {
-      return false
+    const selected_vision = $('#customizeGlassesModal [name="vision"]:checked').val()
+    if (selected_vision === 'single_vision_rx') {
+      if (right_od_sph === '' || left_os_sph === '' || right_od_cyl === '' || left_os_cyl === '' || right_od_axis === '' || left_os_axis === '') {
+        return false
+      }
+    } else if (selected_vision === 'progressive') {
+      const right_od_add = $('#right_od_add').val()
+      const left_os_add = $('#left_os_add').val()
+      if (right_od_sph === '' || left_os_sph === '' || right_od_cyl === '' || left_os_cyl === '' || right_od_axis === '' || left_os_axis === '' || right_od_add === '' || left_os_add === '') {
+        return false
+      }      
     }
     return true
   },
