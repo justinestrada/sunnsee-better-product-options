@@ -43,22 +43,18 @@ const ProductOptions = {
   },
   onClickGoTo: function() {
     $('.btn-go-to').on('click', function() {
-      const goto = $(this).attr('go-to')
+      let goto = $(this).attr('go-to')
       if (goto === 'vision') {
         $('#color-tab').addClass('complete')
       } else if (goto === 'lenses') {
-        /*
-        const vision_val = $('#customizeGlassesModal [name="vision"]:checked').val()
-        if (vision_val === 'progressive') {
-          if ($('#customizeGlassesModal [name="prescription_file"]').val() === '' && $('#customizeGlassesModal [name="prescription_file"]').val() === '') {
-            $('#vision .form-group').addClass('is-invalid')
-            return false;
-          }
-        }
-        */
         $('#vision-tab').addClass('complete')
-      } else if (goto === 'review') {
-        $('#lenses-tab').addClass('complete')
+      } else if (goto === 'review-skip-lenses' || goto === 'review') {
+        if (goto === 'review-skip-lenses') {
+          $('#vision-tab').addClass('complete')
+          goto = 'review'
+        } else {
+          $('#lenses-tab').addClass('complete')
+        }
         ProductOptions.initReview()
       }
       $('#customizeGlassesTab #' + goto + '-tab').tab('show')
@@ -80,7 +76,8 @@ const ProductOptions = {
     this.initPupillaryDistance()
     $('.link-skip-vision-step').on('click', function() {
       $('#vision-tab').addClass('complete')
-      $('#customizeGlassesTab #lenses-tab').tab('show')      
+      $('#lenses-tab, [go-to="lenses"]').prop('disabled', false).removeAttr('disabled')
+      $('#customizeGlassesTab #lenses-tab').tab('show')
     })
   },
   onSelectVision: function() {
@@ -180,11 +177,20 @@ const ProductOptions = {
         if (this.isVisionManualComplete() && this.isPupillaryDistanceComplete()) {
           is_complete = true
         }
-      }  
+      }
     }
     if (is_complete) {
-      $('#lenses-tab, [go-to="lenses"]').prop('disabled', false).removeAttr('disabled')
+      if (vision_value === 'non_prescription') {
+        $('#lenses-tab').prop('disabled', true)
+        $('#vision-content #btn-primary-go-to-lenses').attr('go-to', 'review-skip-lenses')
+      } else {
+        $('#lenses-tab').prop('disabled', false).removeAttr('disabled')
+        $('#vision-content #btn-primary-go-to-lenses').attr('go-to', 'lenses')
+      }
+      $('[go-to="lenses"]').prop('disabled', false).removeAttr('disabled')
     } else {
+      $('#lenses-tab').show()
+      $('#vision-content #btn-primary-go-to-lenses').attr('go-to', 'lenses')
       $('#lenses-tab, [go-to="lenses"]').prop('disabled', true)
     }
     return is_complete
@@ -277,7 +283,7 @@ const ProductOptions = {
       $('[name="lens_coating"]:checked').each(function() {
         selected_lens_coatings.push($(this).val());
       });
-      if (selected_lens_coatings.includes('light_adaptive')) {
+      if (selected_lens_coatings.includes('transitions')) {
         $('#select-transitions-color').show()        
       } else {
         $('#select-transitions-color').hide()
@@ -343,6 +349,9 @@ const ProductOptions = {
     // Lens Material
     const selected_lens_material_label = $('[name="lens_material"]:checked').next().find('.card-title').text()
     $('#review-lens-material_value').html(selected_lens_material_label)
+    if (selected_lens_material_label === 'High-Index') {
+      $('#review-lens-material_price').text('$40')
+    }
     // Lens Coating
     let review_lens_coating_html = review_lens_coating_price = review_lens_coating_remove = ''
     const coating_count = $('[name="lens_coating"]:checked').lenght
@@ -390,7 +399,7 @@ const ProductOptions = {
       </div>\
       <div class="row">\
         <div class="col-6">CYL ' + right_od_cyl + '</div>\
-        <div class="col-6">CYL ' + left_os_sph + '</div>\
+        <div class="col-6">CYL ' + left_os_cyl + '</div>\
       </div>\
       <div class="row">\
         <div class="col-6">AXIS ' + right_od_axis + '</div>\
