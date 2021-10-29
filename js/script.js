@@ -268,6 +268,7 @@ const ProductOptions = {
     const self = this
     $('#customizeGlassesModal [name="lens_material"]').on('change', function() {
       self.isLensesComplete()
+      $('#select-lens-coating').slideDown()
     })
   },
   onSelectLensCoating: function() {
@@ -309,12 +310,19 @@ const ProductOptions = {
   },
   */
   initReview: function() {
+    this.createReviewSummary()
+    this.onClickRemove()
+  },
+  createReviewSummary: function() {
     // Color
     const selected_color_label = $('[name="color"]:checked').next().find('.card-title').text()
     $('#review-color').html( selected_color_label )
     // Vision
     const selected_vision_type_label = $('[name="vision"]:checked').next().find('.card-title').text()
     $('#review-vision-type').html( selected_vision_type_label )
+    // Color Price
+    const selected_color_price = (selected_vision_type_label !== 'Non-Rx') ? $('[name="color"]:checked').next().find('.card-price').text() : '$45'
+    $('#review-color_price').html( selected_color_price )
     // Prescription Type
     if ($('[name="vision"]:checked').val() !== 'non_prescription') {
       let review_prescription_type_html = '<div>'
@@ -332,6 +340,35 @@ const ProductOptions = {
       $('#review-prescription-type_value').empty()
       $('#review-prescription-type').hide()
     }
+    // Lens Material
+    const selected_lens_material_label = $('[name="lens_material"]:checked').next().find('.card-title').text()
+    $('#review-lens-material_value').html(selected_lens_material_label)
+    // Lens Coating
+    let review_lens_coating_html = review_lens_coating_price = review_lens_coating_remove = ''
+    const coating_count = $('[name="lens_coating"]:checked').lenght
+    $('[name="lens_coating"]:checked').each(function() { 
+      const val = $(this).val()
+      review_lens_coating_html += '<div class="review-lens-coating_' + val + '">'
+      review_lens_coating_price += '<div class="review-lens-coating_' + val + '">'
+      review_lens_coating_remove += '<div class="review-lens-coating_' + val + '">'
+        review_lens_coating_html += $(this).next().find('.card-title').text()
+        if (val === 'blue_filter' || val === 'transitions') {
+          review_lens_coating_price += $(this).next().find('.card-price').text()
+          review_lens_coating_remove += '\
+            <button class="review-remove" value="lens_coating_' + val + '">\
+              <i class="review-remove-icon fa fa-times-circle" aria-hidden="true" value="review-lens-coating_' + val + '"></i><span class="sr-only">Remove</span>\
+            </button>'
+        } else {
+          review_lens_coating_price += '<span style="visibility: hidden;">Included</span>'
+          review_lens_coating_remove += '<span style="visibility: hidden;">Included</span>'
+        }
+      review_lens_coating_html += '</div>'
+      review_lens_coating_price += '</div>'
+      review_lens_coating_remove += '</div>'
+    })
+    $('#review-lens-coating_value').html(review_lens_coating_html)
+    $('#review-lens-coating_price').html(review_lens_coating_price)
+    $('#review-lens-coating_remove').html(review_lens_coating_remove)
   },
   getReviewPerscriptionTypeManualHTML: function() {
     const right_od_sph = $('#right_od_sph').val()
@@ -360,6 +397,26 @@ const ProductOptions = {
         <div class="col-6">AXIS ' + left_os_axis + '</div>\
       </div>'
     return html
+  },
+  onClickRemove: function() {
+    if ($('.review-remove-td').hasClass('loaded')) {
+      return
+    }
+    $('.review-remove-td').on('click', function() {
+      const $target = $(event.target)
+      if ($target.attr('class').includes('review-remove')) {
+        const value = $target.attr('value')
+        if (value && value !== '') {
+          $('.' + value).remove()
+          if (value.includes('lens-coating')) {
+            const unselect_lens_coating_value = value.replace('review-lens-coating_', '')
+            $('[name="lens_coating"][value="' + unselect_lens_coating_value + '"]').prop('checked', false).removeAttr('checked')
+          }
+        }
+        // TODO: re-calculate review total        
+      }
+    })
+    $('.review-remove-td').addClass('loaded')
   },
 }
 

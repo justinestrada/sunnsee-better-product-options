@@ -263,3 +263,8 @@ select.form-control {
 .circle-brown {
   background-color: brown;
 }
+
+button.review-remove {
+  background-color: transparent;
+  border: none;
+}
